@@ -13,8 +13,10 @@ class Project extends Model
     use HasFactory;
 
     protected $fillable = ["name", "description", "image_url"];
+    //define the relationship between the project and the tracks
     public function tracks(): HasMany
     {
+        //return the tracks that belong to the project
         return $this->hasMany(Track::class);
     }
 }

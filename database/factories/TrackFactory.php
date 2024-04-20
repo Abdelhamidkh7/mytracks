@@ -18,6 +18,9 @@ class TrackFactory extends Factory
     {
         return [
             //
+            "name" => fake()->lastName(),
+            "filename" =>null,
+            "color" => fake()->hexColor(),
         ];
     }
 }
