@@ -1,32 +1,38 @@
-@extends('layout.main')
+@extends('layouts.main')
 
 @section('content')
 
 <h2>New track</h2>
-      <form>
-        
+      <form method="post" action="{{route('projects.tracks.store',['project'=>$project])}}">
+        @csrf
         <div class="mb-3">
           <label class="form-label" for="name">Track name</label>
-          <input type="text" class="form-control" id="name" placeholder="">
-          <div class="invalid-feedback">
-            Please choose a track name.
-          </div>
+          <input name="name" type="text" class="form-control @error('name') is-invalid @enderror" id="name" placeholder="">
+          @error('name')
+      <div class="invalid-feedback">
+        {{ $message }}
+      </div>
+      @enderror
         </div>
 
         <div class="mb-3">
           <label class="form-label" for="file">Audio file</label>
-          <input type="file" class="form-control" id="file" placeholder="">
-          <div class="invalid-feedback">
-            Some problem with the file.
-          </div>
+          <input name="filename" type="file" class="form-control @error('filename') is-invalid @enderror" id="file" placeholder="">
+          @error('filename')
+      <div class="invalid-feedback">
+        {{ $message }}
+      </div>
+      @enderror
         </div>
 
         <div class="mb-3">
           <label class="form-label" for="color">Color</label>
-          <input type="color" class="form-control form-control-color" id="color" placeholder="">
-          <div class="invalid-feedback">
-            Please choose a color.
-          </div>
+          <input name="color" type="color" class="form-control form-control-color @error('color') is-invalid @enderror" id="color" placeholder="">
+          @error('color')
+      <div class="invalid-feedback">
+        {{ $message }}
+      </div>
+      @enderror
         </div>
 
         <label class="form-label">Filters</label>

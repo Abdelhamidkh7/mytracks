@@ -11,7 +11,7 @@
       @method("DELETE")
       <button type="submit" class="btn btn-danger">Delete project</button>
     </form>
-    <a href="new-track.html" class="btn btn-primary">Add new track</a>
+    <a href="{{route('projects.tracks.create' , ['project' =>$project])}}" class="btn btn-primary">Add new track</a>
   </p>
   <div class="list-group">
     @foreach($project->tracks as $track)

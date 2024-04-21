@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
 {
@@ -12,12 +13,18 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        DB::table('users')->truncate();
+        DB::table('projects')->truncate();
+        //populating the projects table with 10 projects
+        DB::table('tracks')->truncate();
+
+        \App\Models\User::factory(10)->create();
+
         $this->call([
             ProjectSeeder::class,
         ]);
         
-        // \App\Models\User::factory(10)->create();
-
+       
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
